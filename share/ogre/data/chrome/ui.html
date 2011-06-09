@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>UI</title>
+
+<link href="css/jquery.menu.css" rel="stylesheet" type="text/css" />
+<link href="../jquery_themes/redmond/jquery-ui-1.8.6.custom.css" rel="stylesheet" type="text/css" />
+<link href="css/dockablewindow.css" rel="stylesheet" type="text/css" />
+<link href="css/ui.css" rel="stylesheet" type="text/css" />
+
+<script src="../labjs/LAB.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$LAB.setGlobalDefaults({
+	AllowDuplicates: false,
+	UsePreloading: false,
+	AlwaysPreserveOrder:true,
+	UseLocalXHR: false,
+	UseCachePreload: false
+});
+
+$LAB
+.script("../jquery/js/jquery-1.4.2.min.js").wait()
+.script("../jquery_plugins/jquery.dimensions.js").wait()
+.script("../jquery/js/jquery-ui-1.8.5.custom.min.js").wait()
+.script("../jquery_plugins/jquery.menu.js").wait()
+.script("../jquery_plugins/jquery.jstree.js").wait()
+.script("js/dockablewindow.js").wait() // js/ui.js requires dockablewindow
+.script("js/ui.js").wait()
+.script("js/menu.js")
+.script("js/open_file.js")
+.script("js/cdn_upload.js")
+.wait(function() {
+    $('#ui-box').show();
+    sirikata.event('__ready');
+});
+
+function loadModule(path) {
+	$LAB.script(path).wait();
+}
+
+</script>
+
+</head>
+
+<body>
+<div id='transparency'>
+</div>
+<div id='ui-container'>
+
+<div id='ui-box'>
+
+<ul id="menuone" class="menu">
+	<li class="menumain">File
+		<ul>
+			<li class='action_exit'>Exit</li>
+		</ul>
+	</li>
+	<li class="menumain">Actions
+		<ul>
+			<li class='action_cdn_upload'>CDN Upload Tool</li>
+		</ul>
+	</li>
+	<li class="menumain">Options
+		<ul>
+			<li class='action_toggle_clock'>Toggle Clock</li>
+			<li class='action_toggle_fps'>Toggle FPS Display</li>
+			<li class='action_toggle_render_stats'>Toggle Render Stats Display</li>
+		</ul>
+	</li>
+</ul>
+
+&nbsp;
+
+<div class='flush-right' id='time-clock'>&nbsp;</div>
+<div class='flush-right' id='fps-display'>Average FPS: <span id='fps-num'>0</span></div>
+<div class='flush-right' id='render-stats-display'><span id='render-stats'>0 batches, 0 triangles</span></div>
+<div class='flush-right' id='sirikata-version-display'><span id='sirikata-version-display'>v</span></div>
+
+</div>
+
+<div id="left-dock">
+</div>
+
+</div>
+
+</body>
+
+</html>

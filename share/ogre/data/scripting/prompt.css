@@ -1,0 +1,39 @@
+.ace_scroller {
+    overflow-x: auto;
+}
+.ace_editor .ace_sb {
+    overflow-y: auto;
+}
+
+div.codeedit {
+    min-width: 200px;
+    min-height: 200px;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+div.editborder {
+    border: 2px solid #000;
+    margin: 3px;
+    padding: 3px;
+}
+
+div.editorthumb {
+	margin: 0; padding: 0;
+}
+
+div#edittabs {
+    margin: 0;
+    padding: 0;
+}
+
+div#emerson-prompt-dialog {
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 4px;
+    padding-bottom: 0px;
+    margin: 2px;
+}
+
+.ui-widget { font-size: 0.9em; }
