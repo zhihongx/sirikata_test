@@ -35,11 +35,22 @@
 system.require('std/script/scriptable.em');
 system.require('std/graphics/default.em');
 
-
 scriptable = new std.script.Scriptable();
 system.onPresenceConnected(
     function(pres) {
-        simulator = new std.graphics.DefaultGraphics(pres, 'ogregraphics');
+	    var cb = function(sim) {
+			sim.addGUIModule(
+				"setmesh", "setmesh.js",
+				function(gui) {
+					var handleSetMesh = function(meshurl) {
+					    var setmesh_pres = system.self;
+						setmesh_pres.mesh = meshurl;
+					};
+					gui.bind("setmesh", handleSetMesh);
+				}
+			);
+		};
+        simulator = new std.graphics.DefaultGraphics(pres, 'ogregraphics', cb);
         system.onPresenceConnected(function(){});
     }
 );
